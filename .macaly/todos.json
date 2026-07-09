@@ -1,0 +1,31 @@
+[
+  {
+    "id": "1",
+    "content": "Update styles.css with Google Fonts + om-* CSS variables",
+    "status": "in_progress"
+  },
+  {
+    "id": "2",
+    "content": "Update metadata.json with correct title/description",
+    "status": "pending",
+    "blockedBy": [
+      "1"
+    ]
+  },
+  {
+    "id": "3",
+    "content": "Build complete landing page in index.tsx",
+    "status": "pending",
+    "blockedBy": [
+      "1"
+    ]
+  },
+  {
+    "id": "4",
+    "content": "Verify lints and check result",
+    "status": "pending",
+    "blockedBy": [
+      "3"
+    ]
+  }
+]
