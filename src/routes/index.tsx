@@ -310,8 +310,8 @@ function GithubIcon({ className = 'w-4 h-4' }: { className?: string }) {
 // ─── Main page ────────────────────────────────────────────────────────────────
 
 function HomePage() {
-  const installCmdA = 'claude plugin marketplace add <marketplace-source> --scope user'
-  const installCmdB = 'claude plugin install orchestra-memory@<marketplace-name>'
+  const installCmdA = 'claude plugin marketplace add josefkrajkar/cc-orchestra'
+  const installCmdB = 'claude plugin install orchestra-memory@orchestra'
 
   const features = [
     {
@@ -342,7 +342,7 @@ function HomePage() {
     {
       icon: <IconDatabase className="w-10 h-10" />,
       title: 'Local-only storage',
-      body: 'One SQLite file at ~/.claude/orchestra-memory/graph.db, with daily rotating backups. No embeddings, no API calls, no telemetry.',
+      body: 'One SQLite file at ~/.claude/orchestra-memory/graph.db, with daily rotating backups (last 7 days kept). No embeddings, no API calls, no telemetry.',
     },
   ]
 
@@ -393,7 +393,7 @@ function HomePage() {
     {
       question: 'Does it require an API key or cloud account?',
       answer:
-        'No. orchestra-memory is pure local tooling: a Claude Code plugin bundling an MCP server backed by SQLite. There are no external services, no network calls, and no accounts to set up.',
+        'No. orchestra-memory is pure local tooling: a Claude Code plugin bundling an MCP server (9 tools) backed by SQLite. There are no external services, no network calls, and no accounts to set up.',
     },
     {
       question: 'How does temporal validity work?',
@@ -403,13 +403,13 @@ function HomePage() {
     {
       question: 'What is the Orchestra suite?',
       answer:
-        'Orchestra is an open-source pair of Claude Code plugins: orchestra-memory (this plugin, cross-project graph memory) and orchestra (multi-agent orchestration with conductor, architect, executor, craftsman, sentinel, scout, and scholar agents). Each runs standalone, and orchestra automatically uses orchestra-memory for cross-session wisdom when both are installed.',
+        'Orchestra is an open-source pair of Claude Code plugins living in one monorepo: orchestra-memory (this plugin, cross-project graph memory) and orchestra (multi-agent orchestration with 8 agents—conductor, architect, executor, craftsman, sentinel, scout, scholar, and verifier—plus 10 slash commands and 7 auto-activating skills). Each runs standalone, and orchestra automatically uses orchestra-memory for cross-session wisdom when both are installed.',
     },
   ]
 
   const suite = [
     { name: 'orchestra-memory', desc: 'Cross-project graph memory', active: true },
-    { name: 'orchestra',        desc: 'Multi-agent orchestration',  active: false },
+    { name: 'orchestra',        desc: 'Multi-agent orchestration · 8 agents', active: true },
   ]
 
   return (
@@ -445,7 +445,7 @@ function HomePage() {
           </div>
           {/* GitHub */}
           <a
-            href="https://github.com/orchestra-suite/orchestra-memory"
+            href="https://github.com/josefkrajkar/cc-orchestra"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 text-xs font-mono px-3 py-1.5 rounded border transition-all"
@@ -488,7 +488,7 @@ function HomePage() {
             style={{ borderColor: 'hsl(220 16% 22%)' }}
           >
             <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: '#22D3EE' }} />
-            MIT · local-only · Claude Code plugin · Node ≥ 22.5
+            MIT · local-only · Claude Code plugin · Node ≥ 22.16
           </div>
           {/* Headline */}
           <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold tracking-tight leading-[1.05] text-om-text mb-6">
@@ -506,10 +506,10 @@ function HomePage() {
               className="flex items-center justify-center gap-2 px-7 py-3.5 rounded-lg font-mono text-sm font-semibold text-white transition-all hover:opacity-90"
               style={{ backgroundColor: '#8B5CF6' }}
             >
-              <span style={{ color: '#c4b5fd' }}>$</span>{' claude plugin install orchestra-memory@<marketplace-name>'}
+              <span style={{ color: '#c4b5fd' }}>$</span>{' claude plugin install orchestra-memory@orchestra'}
             </a>
             <a
-              href="https://github.com/orchestra-suite/orchestra-memory"
+              href="https://github.com/josefkrajkar/cc-orchestra"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 px-7 py-3.5 rounded-lg font-mono text-sm font-medium border transition-all"
@@ -745,7 +745,7 @@ function HomePage() {
                   backgroundColor: p.active ? 'hsl(258 89% 66% / 0.07)' : 'hsl(220 16% 11%)',
                 }}
               >
-                {p.active && (
+                {p.name === 'orchestra-memory' && (
                   <span
                     className="absolute top-3 right-3 text-[10px] font-mono px-1.5 py-0.5 rounded"
                     style={{ backgroundColor: '#8B5CF6', color: '#fff' }}
@@ -835,10 +835,10 @@ function HomePage() {
               <path stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" d="M10 9v5M10 7v.5"/>
             </svg>
             <p className="text-xs text-om-text-muted leading-relaxed">
-              <span className="font-mono text-om-text">Node.js ≥ 22.5</span> is required. orchestra-memory uses the
+              <span className="font-mono text-om-text">Node.js ≥ 22.16</span> is required. orchestra-memory uses the
               built-in{' '}
-              <span className="font-mono" style={{ color: '#22D3EE' }}>node:sqlite</span> module
-              introduced in Node 22.5 — no extra database driver needed. After install, nothing else is
+              <span className="font-mono" style={{ color: '#22D3EE' }}>node:sqlite</span> module,
+              which requires Node 22.16 or later — no extra database driver needed. After install, nothing else is
               required: hooks and the bundled MCP server activate automatically.
             </p>
           </div>
@@ -891,7 +891,7 @@ function HomePage() {
           {/* Links */}
           <div className="flex items-center gap-5 text-xs text-om-text-muted">
             <a
-              href="https://github.com/orchestra-suite/orchestra-memory"
+              href="https://github.com/josefkrajkar/cc-orchestra"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-1.5 hover:text-om-text transition-colors"
@@ -900,7 +900,7 @@ function HomePage() {
               GitHub
             </a>
             <a
-              href="https://github.com/orchestra-suite/orchestra-memory#readme"
+              href="https://github.com/josefkrajkar/cc-orchestra#readme"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-om-text transition-colors"
@@ -908,7 +908,7 @@ function HomePage() {
               Docs
             </a>
             <a
-              href="https://github.com/orchestra-suite/orchestra-memory/issues"
+              href="https://github.com/josefkrajkar/cc-orchestra/issues"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-om-text transition-colors"

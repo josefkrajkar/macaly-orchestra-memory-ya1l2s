@@ -1,14 +1,14 @@
 {
   "default": {
     "title": "orchestra-memory — Cross-project graph memory for Claude Code",
-    "description": "Local graph memory for Claude Code. Full-text search, temporal validity, private scoping. No embeddings, no API calls, no cloud. MIT licensed.",
+    "description": "Cross-project graph memory for Claude Code. Full-text search, temporal validity, private scoping. No embeddings, no API calls, no cloud. MIT licensed.",
     "openGraph": {
       "images": ""
     }
   },
   "/": {
     "title": "orchestra-memory — Cross-project graph memory for Claude Code",
-    "description": "Local graph memory for Claude Code. Full-text search, temporal validity, private scoping. No embeddings, no API calls, no cloud. MIT licensed.",
+    "description": "Cross-project graph memory for Claude Code. Full-text search, temporal validity, private scoping. No embeddings, no API calls, no cloud. MIT licensed.",
     "openGraph": {
       "images": ""
     }
